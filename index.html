@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras e Parâmetros em Radiologia Médica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Calculadoras e Parâmetros em Radiologia Médica</h1>
+<div class="search-container">
+    <input type="search" id="searchBar" oninput="filterCards(this.value)" placeholder="Pesquisar calculadoras...">
+</div>
+<div id="noResults" style="display: none; color: #ff4444; text-align: center; margin: 20px;">
+    Nenhum card encontrado para "<span id="searchTerm"></span>"
+</div>
+    </header>
+    
+    
+    <main class="grid-container">
+        <div class="card" data-search-keywords="fígado, esteatose, gordura hepática">
+            <h2>Cálculo de Esteatose Hepática</h2>
+            <div class="calculator">
+                <div class="input-group">
+                    <label for="in-phase">Sinal em Fase (Hz):</label>
+                    <input type="number" id="in-phase" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="out-phase">Sinal fora de Fase (Hz):</label>
+                    <input type="number" id="out-phase" step="0.01">
+                </div>
+                <div class="btn-group">
+                    <button onclick="calculateSteatosis()" class="calculate-btn">Calcular</button>
+                    <button class="btn-reset" onclick="resetCampos1()">Reset</button>
+                </div>
+                <div class="result">
+                    <input type="text" id="result" placeholder="Resultado (%)" readonly>
+                    <span id="classification" class="classification"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-search-keywords="patela, joelho, patelofemoral">
+            <h2>Cálculo de Volume</h2>
+            <div class="calculator">
+                <div class="input-group">
+                    <label for="dimension1">Dimensão 1 (cm):</label>
+                    <input type="number" id="dimension1" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="dimension2">Dimensão 2 (cm):</label>
+                    <input type="number" id="dimension2" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="dimension3">Dimensão 3 (cm):</label>
+                    <input type="number" id="dimension3" step="0.01">
+                </div>
+                <div class="btn-group">
+                    <button onclick="calculateVolume()" class="calculate-btn">Calcular</button>
+                    <button class="btn-reset" onclick="resetCampos2()">Reset</button>
+                </div>
+                <div class="result">
+                    <input type="text" id="volume-result" placeholder="Volume (cm³)" readonly>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 - Parâmetros Femoroacetabulares -->
+        <div class="card" data-search-keywords="quadril, ângulo, fêmur, acetábulo">
+            <h2>Parâmetros do Impacto Femoroacetabular</h2>
+            <div class="calculator">
+                <div class="reference-table-wrapper">
+                    <table class="reference-table">
+                        <tr>
+                            <th>Parâmetro</th>
+                            <th>Valores de Referência</th>
+                        </tr>
+                        <tr>
+                            <td>Versão Acetabular</td>
+                            <td>15-20 graus (normal)</td>
+                        </tr>
+                        <tr>
+                            <td>Offset Centro-Colo-Femoral</td>
+                            <td>10-15 milímetros</td>
+                        </tr>
+                        <tr>
+                            <td>Ângulo de Wiberg (CE)</td>
+                            <td>>25 graus (normal)</td>
+                        </tr>
+                        <tr>
+                            <td>Ângulo de Lequesne (VCA)</td>
+                            <td>>20 graus (normal)</td>
+                        </tr>
+                        <tr>
+                            <td>Ângulo Alfa</td>
+                            <td><55 graus (normal)</td>
+                        </tr>
+                        <tr>
+                            <td>Ângulo Centro-Femoral</td>
+                            <td>120-135 graus (normal)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 - Parâmetros Patelofemorais -->
+        <div class="card" data-search-keywords="patela, joelho, patelofemoral">
+            <h2>Parâmetros Patelofemorais</h2>
+            <div class="calculator">
+                <div class="reference-table-wrapper">
+                    <table class="reference-table">
+                        <tr>
+                            <th>Parâmetro</th>
+                            <th>Valores de Referência</th>
+                        </tr>
+                        <tr>
+                            <td>Classificação Patelar de Wiberg</td>
+                            <td>
+                                Tipo I (normal)<br>
+                                Tipo II (risco moderado)<br>
+                                Tipo III (alto risco)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bascula Patelar</td>
+                            <td>
+                                Normal <10°<br>
+                                >20° = bascula patológica
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Índice de Caton-Deschamps</td>
+                            <td>
+                                Normal 0.6-1.3<br>
+                                <0.6 = patela baixa<br>
+                                >1.3 = patela alta
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Índice de Insall-Salvati</td>
+                            <td>
+                                Ideal 0.8-1.2<br>
+                                <0.8 = patela baixa<br>
+                                >1.2 = patela alta
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Deslocamento Lateral da Patela</td>
+                            <td>
+                                Normal <3mm<br>
+                                >5mm = instabilidade
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>TA-GT</td>
+                            <td>
+                                Valores normais 10-15mm
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Profundidade da Tróclea Femoral</td>
+                            <td>
+                                Mínimo 3mm para estabilidade
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Assimetria das Facetas da Tróclea</td>
+                            <td>
+                                Normal <40%<br>
+                                >60% = displasia
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ângulo do Sulco Troclear</td>
+                            <td>
+                                Normal 130-150°<br>
+                                <130° = displasia
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Card 5 - Clearance Renal (MDRD) -->
+        <div class="card" data-search-keywords="renal, clearance, MDRD, rim">
+            <h2>Clearance Renal (MDRD)</h2>
+            <div class="calculator">
+                <div class="input-group">
+                    <label for="creatinina">Creatinina Sérica (mg/dL):</label>
+                    <input type="number" id="creatinina" step="0.01" min="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="idade">Idade (anos):</label>
+                    <input type="number" id="idade" min="18" max="120">
+                </div>
+                <div class="input-group">
+                    <label>Gênero:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="genero" value="masculino" checked>
+                            Masculino
+                        </label>
+                        <label>
+                            <input type="radio" name="genero" value="feminino">
+                            Feminino
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button onclick="calculateMDRD()" class="calculate-btn">Calcular</button>
+                    <button class="btn-reset" onclick="resetCampos5()">Reset</button>
+                </div>
+                <div class="result">
+                    <input type="text" id="mdrd-result" placeholder="Resultado (mL/min/1.73m²)" readonly>
+                    <span id="mdrd-classification" class="classification"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 - Clearance Renal (Cockroft-Gault) -->
+        <div class="card">
+            <h2>Clearance Renal (Cockroft-Gault)</h2>
+            <div class="calculator">
+                <div class="input-group">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" step="0.1" min="30" max="300">
+                </div>
+                <div class="input-group">
+                    <label for="creatinina-cg">Creatinina (mg/dL):</label>
+                    <input type="number" id="creatinina-cg" step="0.01" min="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="idade-cg">Idade (anos):</label>
+                    <input type="number" id="idade-cg" min="18" max="120">
+                </div>
+                <div class="input-group">
+                    <label>Gênero:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="genero-cg" value="masculino" checked>
+                            Masculino
+                        </label>
+                        <label>
+                            <input type="radio" name="genero-cg" value="feminino">
+                            Feminino
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button onclick="calculateCockroftGault()" class="calculate-btn">Calcular</button>
+                    <button class="btn-reset" onclick="resetCampos6()">Reset</button>
+                </div>
+                <div class="result">
+                    <input type="text" id="cg-result" placeholder="Resultado (mL/min)" readonly>
+                    <span id="cg-classification" class="classification"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 - Classificação de Lesões Musculares -->
+        <div class="card" id="card7">
+            <h2>Classificação de Lesões Musculares</h2>
+            <div class="calculator">
+                <div class="reference-table-wrapper">
+                    <table class="reference-table">
+                        <tr>
+                            <th>Grau</th>
+                            <th>Achados de Ressonância Magnética</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>Edema isolado no espaço perifascial sem descontinuidade de fibras ▪ Hiperintensidade T2/STIR limitada à fáscia ▪ Sem coleção líquida</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><5% de comprometimento fibrilar ▪ Hiperintensidade intramuscular focal ▪ Sinais de sangramento (hipointensidade T1)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>5-50% ruptura + hematoma interfascial ▪ Retração muscular parcial (gap <3cm) ▪ Coleção líquida em 'flama'</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>>50% ruptura + retração >3cm ▪ Sinais de herniação muscular ▪ Apagamento de planos fasciais</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Avulsão óssea completa ▪ Fragmento ósseo deslocado >2cm ▪ Extravasamento para compartimentos adjacentes</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 - Classificação de Estresse Tibial -->
+        <div class="card" id="card8">
+            <h2>Classificação de Estresse Tibial</h2>
+            <div class="calculator">
+                <div class="reference-table-wrapper">
+                    <table class="reference-table">
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Critérios de RM</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>Edema medular tibial anterior <1/3 proximal ▪ Acomete apenas canal medular ▪ Sem envolvimento cortical</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>Edema 1/3 a 2/3 + espessamento periósteo ▪ Linhas de fratura oblíquas visíveis em T1 ▪ Reforço periostal após contraste</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>Edema >2/3 + rarefação trabecular ▪ Linhas de fratura transversais completas ▪ Sinais de necrose avascular focal</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>Fratura completa + desvio cortical ▪ Linha hipointensa T1 atravessando córtex ▪ Coleção subperiostal hemorrágica</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Todos os direitos reservados</p>
+            <p>Site desenvolvido pelo médico radiologista Dr. João Victor Pruner Vieira</p>
+            <p>CRM/PR 30289</p>
+        </div>
+    </footer>
+</body>
+</html>
