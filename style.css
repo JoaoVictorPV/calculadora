@@ -1,3 +1,12 @@
+/* Controle de scroll e redimensionamento */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
 /* Reset e Fontes */
 * {
     margin: 0;
@@ -34,7 +43,7 @@ body {
     line-height: 1.6;
 }
 
-/* Header estilizado */
+/* Header estilizado com garantia de sobreposição */
 header {
     position: fixed;
     top: 0;
@@ -47,6 +56,7 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--glass-border);
+    will-change: transform;
 }
 
 header h1 {
@@ -93,6 +103,8 @@ header h1::after {
     font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .search-container input::placeholder {
@@ -334,8 +346,43 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade */
+/* Otimizações para dispositivos touch - Testado isoladamente */
+@media (pointer: coarse) {
+  .btn-group button,
+  .calculate-btn,
+  .btn-reset,
+  .card {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .search-container input,
+  .input-group input {
+    touch-action: pan-y;
+  }
+}
+
+/* Responsividade - Testado isoladamente */
 @media (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        height: 60px;
+        z-index: 1000;
+    }
+    
+    main {
+        margin-top: 70px;
+    }
+
+    input[type="number"],
+    input[type="search"],
+    input[type="text"] {
+        font-size: 16px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
     .grid-container {
         grid-template-columns: 1fr;
         padding: 1rem;
