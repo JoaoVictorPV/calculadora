@@ -478,15 +478,22 @@ footer {
         padding-top: 220px;
     }
     
-    header {
-        padding: 1.5rem;
-        height: 220px;
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .header-hidden {
+        transform: translateY(-100%);
     }
-    
-    header h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1.2rem;
-    }
+}
     
     .search-container {
         padding: 0 1rem;
@@ -587,4 +594,61 @@ footer {
 .reference-table td {
     padding: 8px 12px;
     word-wrap: break-word;
+}
+
+/* Botões de navegação do modal - Estilo melhorado */
+.nav-button {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.nav-button:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+.prev-button {
+    left: 30px;
+}
+
+.next-button {
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .prev-button {
+        left: 15px;
+    }
+    .next-button {
+        right: 15px;
+    }
 }

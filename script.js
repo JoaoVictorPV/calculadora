@@ -29,7 +29,7 @@ const parameterImages = {
   'Báscula Patelar': ['PT-AB.jpg'],
   
   // Reconstrução do LCA
-  'Posição do Túnel Femoral': ['LCA-PF.jpg'],
+  'Posição do Túnel Femoral': ['LCA-PF-01.jpg', 'LCA-PF-02.jpg', 'LCA-PF-03.jpg', 'LCA-PF-04.jpg', 'LCA-PF-05.jpg'],
   'Posição do Túnel Tibial': ['LCA-PT.jpg'],
   'Ângulo de Curvatura': ['LCA-AC.jpg'],
   'Alargamento do Túnel': ['LCA-AT.jpg'],
@@ -117,16 +117,13 @@ function updateButtonVisibility() {
   const prevBtn = document.querySelector('.prev-button');
   const nextBtn = document.querySelector('.next-button');
   
-  // Esconder ambos se só tem 1 imagem
-  if (currentImageGroup.length <= 1) {
-    prevBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
-    return;
-  }
+  // Mostrar sempre os botões, mas desabilitar quando não houver mais imagens
+  prevBtn.style.display = 'block';
+  nextBtn.style.display = 'block';
   
-  // Mostrar/ocultar conforme posição
-  prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
-  nextBtn.style.display = currentImageIndex < currentImageGroup.length - 1 ? 'block' : 'none';
+  // Desabilitar/ativar conforme posição
+  prevBtn.disabled = currentImageIndex <= 0;
+  nextBtn.disabled = currentImageIndex >= currentImageGroup.length - 1;
 }
 
 // Atualizar imagem no modal
@@ -180,7 +177,7 @@ function calculateVolume() {
 
 function calculateMDRD() {
   const age = parseInt(document.getElementById('idade').value);
-  const creatinine = parseFloat(document.getElementById('creatinina').value);
+  const creatinine = parseFloat(document.getElementById('creatinina').value.replace(',', '.'));
   const isMale = document.querySelector('input[name="gender"]:checked').value === 'masculino';
   const resultField = document.getElementById('mdrd-result');
   const classification = document.getElementById('mdrd-classification');
@@ -224,7 +221,7 @@ function calculateMDRD() {
 
 function calculateCockroftGault() {
   const weight = parseFloat(document.getElementById('peso').value);
-  const creatinine = parseFloat(document.getElementById('creatinina-cg').value);
+  const creatinine = parseFloat(document.getElementById('creatinina-cg').value.replace(',', '.'));
   const age = parseInt(document.getElementById('idade-cg').value);
   const isMale = document.querySelector('input[name="genero-cg"]:checked').value === 'masculino';
   const resultField = document.getElementById('cg-result');
@@ -330,7 +327,7 @@ function filterCards(searchTerm) {
 function calculatePediatricCBR() {
   const age = parseInt(document.getElementById('childAge').value);
   const height = parseFloat(document.getElementById('childHeight').value);
-  const creatinine = parseFloat(document.getElementById('childCreatinine').value);
+  const creatinine = parseFloat(document.getElementById('childCreatinine').value.replace(',', '.'));
   const isMale = document.querySelector('input[name="childGender"]:checked').value === 'masculino';
   const resultField = document.getElementById('pedcbr-result');
   const classification = document.getElementById('pedcbr-classification');
@@ -382,3 +379,21 @@ function resetPediatricCBR() {
   document.getElementById('pedcbr-result').style.color = '';
   document.getElementById('pedcbr-classification').style.color = '';
 }
+
+// Scroll behavior for mobile header
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+  const currentScroll = window.pageYOffset;
+  const header = document.querySelector('header');
+  
+  if (window.innerWidth <= 768) { // Only for mobile
+    if (currentScroll > lastScroll && currentScroll > 50) {
+      // Scrolling down
+      header.classList.add('header-hidden');
+    } else {
+      // Scrolling up
+      header.classList.remove('header-hidden');
+    }
+    lastScroll = currentScroll;
+  }
+});
