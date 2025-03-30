@@ -439,35 +439,13 @@ footer {
 
 /* Responsividade - Testado isoladamente */
 @media (max-width: 768px) {
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: transform 0.3s ease-out;
-}
-
-.search-container {
-  position: fixed;
-  top: 60px;
-  width: 100%;
-  z-index: 999;
-  transition: transform 0.3s ease-out;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 768px) {
-  .search-container {
-    top: 50px;
-    padding: 8px;
-  }
-  
-  main {
-    padding-top: 100px;
-  }
-}
+    header {
+        position: fixed;
+        top: 0;
+        height: 140px;
+        padding: 1.5rem;
+        z-index: 1000;
+    }
     
     main {
         margin-top: 180px;

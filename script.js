@@ -383,39 +383,24 @@ function resetPediatricCBR() {
 // Scroll behavior for mobile header
 let lastScroll = 0;
 const header = document.querySelector('header');
-const searchBar = document.querySelector('.search-container');
 
 window.addEventListener('scroll', function() {
-  if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) { // Only for mobile portrait
+  if (window.innerWidth <= 768) { // Only for mobile
     const currentScroll = window.pageYOffset;
     
     if (currentScroll <= 0) {
+      // At top of page
       header.style.transform = 'translateY(0)';
-      searchBar.style.transform = 'translateY(0)';
       return;
     }
     
-    if (currentScroll > lastScroll && currentScroll > 50) {
-      // Scrolling down - hide both completely
-      header.style.transition = 'transform 0.3s ease-out';
-      searchBar.style.transition = 'transform 0.3s ease-out';
+    if (currentScroll > lastScroll) {
+      // Scrolling down - hide header
       header.style.transform = 'translateY(-100%)';
-      searchBar.style.transform = 'translateY(-100%)';
     } else {
-      // Scrolling up - show both
-      header.style.transition = 'transform 0.3s ease-out';
-      searchBar.style.transition = 'transform 0.3s ease-out';
+      // Scrolling up - show header
       header.style.transform = 'translateY(0)';
-      searchBar.style.transform = 'translateY(0)';
     }
     lastScroll = currentScroll;
-  }
-});
-
-// Ensure elements start at top on page load
-window.addEventListener('load', function() {
-  if (window.innerWidth <= 768) {
-    header.style.transform = 'translateY(0)';
-    searchBar.style.transform = 'translateY(0)';
   }
 });
