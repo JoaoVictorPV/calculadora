@@ -32,8 +32,8 @@
                     <input type="number" id="out-phase" step="0.01">
                 </div>
                 <div class="btn-group">
-                    <button onclick="calculateSteatosis()" class="calculate-btn">Calcular</button>
-                    <button class="btn-reset" onclick="resetCampos1()">Reset</button>
+                    <button onclick="calculateSteatosis()" class="btn-calcular-esteatose">Calcular</button>
+                    <button class="btn-reset-esteatose" onclick="resetCampos1()">Reset</button>
                 </div>
                 <div class="result">
                     <input type="text" id="result" placeholder="Resultado (%)" readonly>
@@ -57,8 +57,8 @@
                     <input type="number" id="dimension3" step="0.01">
                 </div>
                 <div class="btn-group">
-                    <button onclick="calculateVolume()" class="calculate-btn">Calcular</button>
-                    <button class="btn-reset" onclick="resetCampos2()">Reset</button>
+                    <button onclick="calculateVolume()" class="btn-calcular-volume">Calcular</button>
+                    <button class="btn-reset-volume" onclick="resetCampos2()">Reset</button>
                 </div>
                 <div class="result">
                     <input type="text" id="volume-result" placeholder="Volume (cm³)" readonly>
@@ -78,85 +78,85 @@
                             <th style="width:20%">Obs.</th>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="ACB-01.jpg" data-title="Ângulo centro-borda">Ângulo centro-borda</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('ACB-01.jpg')">Ângulo centro-borda</span></td>
                             <td>Cobertura lateral cabeça femoral</td>
                             <td>25-40°</td>
                             <td><20° displasia<br>>40° excesso</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="IEX-02.jpg" data-title="Índice de extrusão">Índ. extrusão</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('IEX-02.jpg')">Índ. extrusão</span></td>
                             <td>% cabeça não coberta</td>
                             <td>~25%</td>
                             <td>Cobertura <75% displasia</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="IAC-03.jpg" data-title="Índice acetabular">Índ. acetabular</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('IAC-03.jpg')">Índ. acetabular</span></td>
                             <td>Ângulo teto acetabular</td>
                             <td>0-10°</td>
                             <td>>10° instabilidade</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="AVS-04.jpg" data-title="Ângulo de versão">Versão acetabular</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('AVS-04.jpg')">Versão acetabular</span></td>
                             <td>Orientação axial acetábulo</td>
                             <td>20-40°</td>
                             <td><15° impacto</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="AEB-05.jpg" data-title="Ângulo equatorial-borda">Ângulo equatorial</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('AEB-05.jpg')">Ângulo equatorial</span></td>
                             <td>Inclinação axial acetábulo</td>
                             <td>~20°</td>
                             <td>-</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="ATB-06.jpg" data-title="Ângulo teto-borda">Ângulo teto</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('ATB-06.jpg')">Ângulo teto</span></td>
                             <td>Inclinação proximal acetábulo</td>
                             <td>~14°</td>
                             <td>Varia com cross-over</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="EFE-07.jpg" data-title="Eixo femoral">Eixo femoral</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('EFE-07.jpg')">Eixo femoral</span></td>
                             <td>Alinhamento diáfise</td>
                             <td>-</td>
                             <td>Referência</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="ACE-08.jpg" data-title="Ângulo cefalodiafisário">Ângulo colo-diafisário</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('ACE-08.jpg')">Ângulo colo-diafisário</span></td>
                             <td>Inclinação colo/diáfise</td>
                             <td>120-140°</td>
                             <td>Extremos = deform.</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="TFE-09.jpg" data-title="Torção femoral">Torção femoral</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('TFE-09.jpg')">Torção femoral</span></td>
                             <td>Rotação colo/côndilos</td>
                             <td>10-25°</td>
                             <td><8° retroversão</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="ATE-10.jpg" data-title="Ângulo torção epifisária">Torção epifisária</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('ATE-10.jpg')">Torção epifisária</span></td>
                             <td>Alinhamento epífise/colo</td>
                             <td><20°</td>
                             <td>>20° retrotorção</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="OFE-11.jpg" data-title="Offset femoral">Offset femoral</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('OFE-11.jpg')">Offset femoral</span></td>
                             <td>Espaço ant. cabeça/colo</td>
                             <td>8-12mm</td>
                             <td><8mm risco ↑</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="ROE-12.jpg" data-title="Razão offset">Razão offset</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('ROE-12.jpg')">Razão offset</span></td>
                             <td>Offset/diâmetro cabeça</td>
                             <td>0.18-0.24</td>
                             <td><0.15 deform.</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="AAL-13.jpg" data-title="Ângulo alfa">Ângulo cabeça-colo</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('AAL-13.jpg')">Ângulo cabeça-colo</span></td>
                             <td>Contorno transição</td>
                             <td><55°</td>
                             <td>>55° deform.</td>
                         </tr>
                         <tr>
-                            <td><a class="param-link" data-img="DFA-14.jpg" data-title="Distância femoral anterior">Dist. femoral ant.</a></td>
+                            <td><span class="link-tabela" onclick="abrirModal('DFA-14.jpg')">Dist. femoral ant.</span></td>
                             <td>Protusão cabeça ant.</td>
                             <td><3.6mm</td>
                             <td>>3.6mm risco ↑</td>
@@ -166,112 +166,113 @@
             </div>
         </div>
 
-        <!-- Card 4 - Parâmetros Patelofemorais -->
+        <!-- Card 4 - Parâmetros na Instabilidade Femoropatelar -->
         <div class="card" data-search-keywords="patela, joelho, patelofemoral">
-            <h2>Parâmetros Patelofemorais</h2>
+            <h2>Parâmetros na Instabilidade Femoropatelar</h2>
             <div class="calculator">
                 <div class="reference-table-wrapper">
                     <table class="reference-table">
                         <tr>
-                            <th>Parâmetro</th>
-                            <th>Valores de Referência</th>
+                            <th style="width:25%">Parâmetro</th>
+                            <th style="width:35%">Definição</th>
+                            <th style="width:20%">Valores</th>
+                            <th style="width:20%">Obs.</th>
                         </tr>
                         <tr>
-                            <td>Classificação Patelar de Wiberg</td>
-                            <td>
-                                Tipo I (normal)<br>
-                                Tipo II (risco moderado)<br>
-                                Tipo III (alto risco)
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-AF.jpg')">Alinh. Femorotibial</span></td>
+                            <td>Ângulo eixos mecânicos fêmur/tíbia</td>
+                            <td>1-1,5° varo</td>
+                            <td>>3,2° varo ou >1° valgo = risco</td>
                         </tr>
                         <tr>
-                            <td>Bascula Patelar</td>
-                            <td>
-                                Normal <10°<br>
-                                >20° = bascula patológica
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-ST.jpg')">Ângulo Sulco</span></td>
+                            <td>Ângulo facetas medial/lateral</td>
+                            <td><145° (RX)<br><150° (TC/RM)</td>
+                            <td>Não avalia porção superior</td>
                         </tr>
                         <tr>
-                            <td>Índice de Caton-Deschamps</td>
-                            <td>
-                                Normal 0.6-1.3<br>
-                                <0.6 = patela baixa<br>
-                                >1.3 = patela alta
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-IL.jpg')">Incl. Lateral</span></td>
+                            <td>Ângulo faceta lateral vs linha bicondiliana</td>
+                            <td>>11°</td>
+                            <td>≤11° = displasia</td>
                         </tr>
                         <tr>
-                            <td>Índice de Insall-Salvati</td>
-                            <td>
-                                Ideal 0.8-1.2<br>
-                                <0.8 = patela baixa<br>
-                                >1.2 = patela alta
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-PR.jpg')">Prof. Troclear</span></td>
+                            <td>Dist. margem óssea/cartilagem ao fundo</td>
+                            <td>Osso >3mm<br>Cart. >5mm</td>
+                            <td>Métodos Ali/Escada</td>
                         </tr>
                         <tr>
-                            <td>Deslocamento Lateral da Patela</td>
-                            <td>
-                                Normal <3mm<br>
-                                >5mm = instabilidade
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-DT.jpg')">TA-GT</span></td>
+                            <td>Dist. TT-fundo tróclea</td>
+                            <td><15mm</td>
+                            <td>RM subestima vs TC</td>
                         </tr>
                         <tr>
-                            <td>TA-GT</td>
-                            <td>
-                                Valores normais 10-15mm
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-DL.jpg')">TA-LCP</span></td>
+                            <td>Dist. TT-LCP</td>
+                            <td><15mm</td>
+                            <td>>20mm = significativo</td>
                         </tr>
                         <tr>
-                            <td>Profundidade da Tróclea Femoral</td>
-                            <td>
-                                Mínimo 3mm para estabilidade
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-AP.jpg')">Alt. Patelar</span></td>
+                            <td>Razão LP/alt. patela</td>
+                            <td>1,0</td>
+                            <td><0,8 baixa<br>>1,2 alta</td>
                         </tr>
                         <tr>
-                            <td>Assimetria das Facetas da Tróclea</td>
-                            <td>
-                                Normal <40%<br>
-                                >60% = displasia
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-DP.jpg')">Desloc. Patelar</span></td>
+                            <td>Dist. margem medial patela/tróclea</td>
+                            <td>2-5mm</td>
+                            <td>Fisiológico em extensão</td>
                         </tr>
                         <tr>
-                            <td>Ângulo do Sulco Troclear</td>
-                            <td>
-                                Normal 130-150°<br>
-                                <130° = displasia
-                            </td>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-AC.jpg')">Âng. Congruência</span></td>
+                            <td>Ângulo bissetriz sulco-linha patela</td>
+                            <td>-6°±11°</td>
+                            <td>>16° = anormal</td>
+                        </tr>
+                        <tr>
+                            <td><span class="link-tabela" onclick="abrirModal('PT-AB.jpg')">Báscula Patelar</span></td>
+                            <td>Ângulo linha bicondiliana-equador patela</td>
+                            <td><20°</td>
+                            <td>-</td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <!-- Card 5 - Clearance Renal (MDRD) -->
-        <div class="card" data-search-keywords="renal, clearance, MDRD, rim">
-            <h2>Clearance Renal (MDRD)</h2>
+        <!-- Card 5 - Cálculo de Função Renal Adulto (CKD-EPI 2021) -->
+        <div class="card" data-search-keywords="renal, clearance, CBR, rim, adulto">
+            <h2>Cálculo de Função Renal Adulto (CKD-EPI 2021)</h2>
             <div class="calculator">
                 <div class="input-group">
-                    <label for="creatinina">Creatinina Sérica (mg/dL):</label>
-                    <input type="number" id="creatinina" step="0.01" min="0.1">
+                    <label for="idade">Idade (anos):</label>
+                    <input type="text" id="idade" pattern="[0-9]*" inputmode="numeric">
                 </div>
                 <div class="input-group">
-                    <label for="idade">Idade (anos):</label>
-                    <input type="number" id="idade" min="18" max="120">
+                    <label for="creatinina">Creatinina sérica (mg/dL):</label>
+                    <input type="text" id="creatinina" pattern="[0-9.]*" inputmode="decimal">
                 </div>
                 <div class="input-group">
                     <label>Gênero:</label>
                     <div class="radio-group">
-                        <label>
-                            <input type="radio" name="genero" value="masculino" checked>
-                            Masculino
-                        </label>
-                        <label>
-                            <input type="radio" name="genero" value="feminino">
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
+                            <input type="radio" name="gender" value="feminino" checked>
+                            <span class="radio-custom"></span>
                             Feminino
+                        </label>
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
+                            <input type="radio" name="gender" value="masculino">
+                            <span class="radio-custom"></span>
+                            Masculino
                         </label>
                     </div>
                 </div>
+
                 <div class="btn-group">
-                    <button onclick="calculateMDRD()" class="calculate-btn">Calcular</button>
-                    <button class="btn-reset" onclick="resetCampos5()">Reset</button>
+                    <button onclick="calculateMDRD()" class="btn-calcular-mdrd">Calcular</button>
+                    <button class="btn-reset-mdrd" onclick="resetCampos5()">Reset</button>
                 </div>
                 <div class="result">
                     <input type="text" id="mdrd-result" placeholder="Resultado (mL/min/1.73m²)" readonly>
@@ -286,32 +287,34 @@
             <div class="calculator">
                 <div class="input-group">
                     <label for="peso">Peso (kg):</label>
-                    <input type="number" id="peso" step="0.1" min="30" max="300">
+                    <input type="text" id="peso" pattern="[0-9.]*" inputmode="decimal" required>
                 </div>
                 <div class="input-group">
                     <label for="creatinina-cg">Creatinina (mg/dL):</label>
-                    <input type="number" id="creatinina-cg" step="0.01" min="0.1">
+                    <input type="text" id="creatinina-cg" pattern="[0-9.]*" inputmode="decimal" required>
                 </div>
                 <div class="input-group">
                     <label for="idade-cg">Idade (anos):</label>
-                    <input type="number" id="idade-cg" min="18" max="120">
+                    <input type="text" id="idade-cg" pattern="[0-9]*" inputmode="numeric" required>
                 </div>
                 <div class="input-group">
                     <label>Gênero:</label>
                     <div class="radio-group">
-                        <label>
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
                             <input type="radio" name="genero-cg" value="masculino" checked>
+                            <span class="radio-custom"></span>
                             Masculino
                         </label>
-                        <label>
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
                             <input type="radio" name="genero-cg" value="feminino">
+                            <span class="radio-custom"></span>
                             Feminino
                         </label>
                     </div>
                 </div>
                 <div class="btn-group">
-                    <button onclick="calculateCockroftGault()" class="calculate-btn">Calcular</button>
-                    <button class="btn-reset" onclick="resetCampos6()">Reset</button>
+                    <button onclick="calculateCockroftGault()" class="btn-calcular-cockroft">Calcular</button>
+                    <button class="btn-reset-cockroft" onclick="resetCampos6()">Reset</button>
                 </div>
                 <div class="result">
                     <input type="text" id="cg-result" placeholder="Resultado (mL/min)" readonly>
@@ -320,68 +323,92 @@
             </div>
         </div>
 
-        <!-- Card 7 - Classificação de Lesões Musculares -->
+        <!-- Card 7 - Parâmetros na avaliação da Reconstrução do LCA -->
         <div class="card" id="card7">
-            <h2>Classificação de Lesões Musculares</h2>
+            <h2>Parâmetros na avaliação da Reconstrução do LCA</h2>
             <div class="calculator">
                 <div class="reference-table-wrapper">
                     <table class="reference-table">
                         <tr>
-                            <th>Grau</th>
-                            <th>Achados de Ressonância Magnética</th>
+                            <th style="width:20%">Parâmetro</th>
+                            <th style="width:40%">Definição Resumida</th>
+                            <th style="width:20%">Valores de Referência</th>
+                            <th style="width:20%">Observações</th>
                         </tr>
                         <tr>
-                            <td>0</td>
-                            <td>Edema isolado no espaço perifascial sem descontinuidade de fibras ▪ Hiperintensidade T2/STIR limitada à fáscia ▪ Sem coleção líquida</td>
+                            <td><span class="link-tabela" onclick="abrirModal('LCA-PF.jpg')">Posição do Túnel Femoral</span></td>
+                            <td>Localização do túnel femoral pelo método dos quadrantes (3D)</td>
+                            <td>20%–30% (Forsythe et al., 2013)</td>
+                            <td><20%: risco de killer turn; >30%: risco de colisão</td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td><5% de comprometimento fibrilar ▪ Hiperintensidade intramuscular focal ▪ Sinais de sangramento (hipointensidade T1)</td>
+                            <td><span class="link-tabela" onclick="abrirModal('LCA-PT.jpg')">Posição do Túnel Tibial</span></td>
+                            <td>Distância da espinha tibial (% da área tibial)</td>
+                            <td>40%–50% (Sonnery-Cottet et al., 2015)</td>
+                            <td><40%: instabilidade rotacional; >50%: impingimento</td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>5-50% ruptura + hematoma interfascial ▪ Retração muscular parcial (gap <3cm) ▪ Coleção líquida em 'flama'</td>
+                            <td><span class="link-tabela" onclick="abrirModal('LCA-AC.jpg')">Ângulo de Curvatura</span></td>
+                            <td>Ângulo do enxerto no túnel femoral (avaliação 3D)</td>
+                            <td><60° (Zauleck et al., 2014)</td>
+                            <td>≥60°: risco de falha precoce</td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>>50% ruptura + retração >3cm ▪ Sinais de herniação muscular ▪ Apagamento de planos fasciais</td>
+                            <td><span class="link-tabela" onclick="abrirModal('LCA-AT.jpg')">Alargamento do Túnel</span></td>
+                            <td>Diferença no diâmetro do túnel (pós-operatório vs controle)</td>
+                            <td><2 mm (Segawa et al., 2001)</td>
+                            <td>>2 mm: suspeitar de infecção</td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>Avulsão óssea completa ▪ Fragmento ósseo deslocado >2cm ▪ Extravasamento para compartimentos adjacentes</td>
+                            <td><span class="link-tabela" onclick="abrirModal('LCA-DO.jpg')">Densidade Óssea</span></td>
+                            <td>Densidade de Hounsfield ao redor do túnel</td>
+                            <td>>500 HU (Webster et al., 2016)</td>
+                            <td><500 HU: risco de soltura</td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- Card 8 - Classificação de Estresse Tibial -->
-        <div class="card" id="card8">
-            <h2>Classificação de Estresse Tibial</h2>
+        <!-- Card 8 - Cálculo de Função Renal Pediátrica (Schwartz) -->
+        <div class="card" data-search-keywords="renal, clearance, CBR, rim, pediatria, criança">
+            <h2>Cálculo de Função Renal Pediátrica (Schwartz)</h2>
             <div class="calculator">
-                <div class="reference-table-wrapper">
-                    <table class="reference-table">
-                        <tr>
-                            <th>Tipo</th>
-                            <th>Critérios de RM</th>
-                        </tr>
-                        <tr>
-                            <td>A</td>
-                            <td>Edema medular tibial anterior <1/3 proximal ▪ Acomete apenas canal medular ▪ Sem envolvimento cortical</td>
-                        </tr>
-                        <tr>
-                            <td>B</td>
-                            <td>Edema 1/3 a 2/3 + espessamento periósteo ▪ Linhas de fratura oblíquas visíveis em T1 ▪ Reforço periostal após contraste</td>
-                        </tr>
-                        <tr>
-                            <td>C</td>
-                            <td>Edema >2/3 + rarefação trabecular ▪ Linhas de fratura transversais completas ▪ Sinais de necrose avascular focal</td>
-                        </tr>
-                        <tr>
-                            <td>D</td>
-                            <td>Fratura completa + desvio cortical ▪ Linha hipointensa T1 atravessando córtex ▪ Coleção subperiostal hemorrágica</td>
-                        </tr>
-                    </table>
+                <div class="input-group">
+                    <label for="childAge">Idade (anos):</label>
+                    <input type="text" id="childAge" pattern="[0-9]*" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="childHeight">Altura (cm):</label>
+                    <input type="text" id="childHeight" pattern="[0-9]*" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="childCreatinine">Creatinina sérica (mg/dL):</label>
+                    <input type="text" id="childCreatinine" pattern="[0-9.]*" inputmode="decimal">
+                </div>
+                <div class="input-group">
+                    <label>Gênero:</label>
+                    <div class="radio-group">
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
+                            <input type="radio" name="childGender" value="feminino" checked>
+                            <span class="radio-custom"></span>
+                            Feminino (k=0.55)
+                        </label>
+                        <label class="radio-option" style="display: flex; align-items: center; justify-content: center;">
+                            <input type="radio" name="childGender" value="masculino">
+                            <span class="radio-custom"></span>
+                            Masculino (k=0.70)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button onclick="calculatePediatricCBR()" class="btn-calcular-pedcbr">Calcular</button>
+                    <button class="btn-reset-pedcbr" onclick="resetPediatricCBR()">Reset</button>
+                </div>
+                <div class="result">
+                    <input type="text" id="pedcbr-result" placeholder="Resultado (mL/min/1.73m²)" readonly>
+                    <span id="pedcbr-classification" class="classification"></span>
                 </div>
             </div>
         </div>
@@ -394,5 +421,19 @@
             <p>CRM/PR 30289</p>
         </div>
     </footer>
+    <!-- Modal único para todas as imagens -->
+<div id="modal-tabelas">
+  <div class="modal-header">
+    <span class="close-modal">&times;</span>
+    <h3 id="modal-title"></h3>
+  </div>
+  <div class="modal-content">
+    <button class="nav-button prev-button"><</button>
+    <img id="imagem-modal" src="">
+    <button class="nav-button next-button">></button>
+  </div>
+</div>
+
+    <script src="script.js"></script>
 </body>
 </html>

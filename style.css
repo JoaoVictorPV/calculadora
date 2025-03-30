@@ -41,6 +41,7 @@ body {
     color: white;
     padding-top: 150px;
     line-height: 1.6;
+    overflow-y: auto;
 }
 
 /* Header estilizado com garantia de sobreposição */
@@ -175,6 +176,40 @@ header h1::after {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Estilos para radio buttons personalizados */
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.radio-custom {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background: #3498db;
+    border-radius: 50%;
+}
+
 .radio-group {
     display: flex;
     gap: 1rem;
@@ -194,14 +229,27 @@ header h1::after {
     width: auto;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
     width: 100%;
-    padding: 10px 15px;
+    padding: 12px 15px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: white;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
 }
 
 .input-group input:focus {
@@ -230,29 +278,52 @@ button {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .calculate-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+    filter: brightness(1.1);
 }
 
 .btn-reset {
     background: transparent;
     border: 2px solid var(--danger);
     color: var(--danger);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .btn-reset:hover {
     background: var(--danger);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
 }
 
 /* Resultados */
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
 .result input {
     width: 100%;
     padding: 12px;
-    margin-top: 1rem;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -265,18 +336,22 @@ button {
 .classification {
     display: inline-block;
     margin-top: 0.5rem;
-    padding: 0.3rem 0.8rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 600;
+    text-align: center;
+    width: fit-content;
 }
 
 /* Tabelas de referência */
 .reference-table-wrapper {
     max-height: 400px;
     overflow-y: auto;
-    margin: 1rem 0;
+    margin: 1rem auto;
     border-radius: 8px;
+    width: 98%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .reference-table {
@@ -430,15 +505,86 @@ footer {
     }
 }
 
-/* Estilos limpos para links de parâmetros - sem ícones */
-.param-link {
-    color: #4A90E2;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s ease;
+/* Modal Styles - Added enhancements */
+#modal-tabelas {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    overflow: auto;
+    touch-action: manipulation;
 }
 
-.param-link:hover {
-    color: #5da1ff;
+.modal-header {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 2001;
+    padding: 0 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #f44336;
+}
+
+#modal-title {
+    color: white;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+#modal-tabelas img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Table Link Styles - Added enhancements */
+.link-tabela {
+    color: #4CC9F0;
     text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.link-tabela:hover {
+    color: #3aa8d8;
+    text-decoration: none;
+}
+
+/* Table Styles - Added enhancements */
+.reference-table {
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+.reference-table th, 
+.reference-table td {
+    padding: 8px 12px;
+    word-wrap: break-word;
 }
