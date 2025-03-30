@@ -382,24 +382,17 @@ function resetPediatricCBR() {
 
 // Scroll behavior for mobile header
 let lastScroll = 0;
-const header = document.querySelector('header');
-
 window.addEventListener('scroll', function() {
+  const currentScroll = window.pageYOffset;
+  const header = document.querySelector('header');
+  
   if (window.innerWidth <= 768) { // Only for mobile
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-      // At top of page
-      header.style.transform = 'translateY(0)';
-      return;
-    }
-    
-    if (currentScroll > lastScroll) {
-      // Scrolling down - hide header
-      header.style.transform = 'translateY(-100%)';
+    if (currentScroll > lastScroll && currentScroll > 50) {
+      // Scrolling down
+      header.classList.add('header-hidden');
     } else {
-      // Scrolling up - show header
-      header.style.transform = 'translateY(0)';
+      // Scrolling up
+      header.classList.remove('header-hidden');
     }
     lastScroll = currentScroll;
   }
