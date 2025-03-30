@@ -386,19 +386,17 @@ const header = document.querySelector('header');
 const searchBar = document.querySelector('.search-container');
 
 window.addEventListener('scroll', function() {
-  if (window.innerWidth <= 768) { // Only for mobile
+  if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) { // Only for mobile portrait
     const currentScroll = window.pageYOffset;
     
-    // Reset to top on page load
     if (currentScroll <= 0) {
       header.style.transform = 'translateY(0)';
       searchBar.style.transform = 'translateY(0)';
       return;
     }
     
-    // Smooth hide/show with transition
     if (currentScroll > lastScroll && currentScroll > 50) {
-      // Scrolling down - hide both header and search
+      // Scrolling down - hide both completely
       header.style.transition = 'transform 0.3s ease-out';
       searchBar.style.transition = 'transform 0.3s ease-out';
       header.style.transform = 'translateY(-100%)';
