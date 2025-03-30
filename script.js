@@ -131,7 +131,7 @@ function updateButtonVisibility() {
 
 // Atualizar imagem no modal
 function updateModalImage(imgElement, titleElement, imageName) {
-  imgElement.src = 'imagens/' + imageName;
+  imgElement.src = imageName;
   titleElement.textContent = parameterNames[imageName] || 'Parâmetro';
   updateButtonVisibility();
 }
