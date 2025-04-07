@@ -459,12 +459,28 @@ footer {
     header {
         position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         padding: 1rem;
         z-index: 1000;
+        transform: translateY(0);
+        transition: transform 0.3s ease-in-out;
     }
     
-    main {
-        margin-top: 180px;
+    body {
+        padding-top: 180px;
+    }
+
+    .search-container {
+        position: relative;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+    }
+
+    .search-container input {
+        position: static;
+        transform: none !important;
     }
 
     input[type="number"],
@@ -491,7 +507,7 @@ footer {
 
 @media (max-width: 480px) {
     body {
-        padding-top: 240px;
+        padding-top: 180px;
     }
     
 header {
