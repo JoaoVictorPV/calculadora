@@ -380,20 +380,29 @@ function resetPediatricCBR() {
   document.getElementById('pedcbr-classification').style.color = '';
 }
 
-// Scroll behavior for mobile header
+// Scroll behavior for responsive header
 let lastScroll = 0;
 window.addEventListener('scroll', function() {
   const currentScroll = window.pageYOffset;
   const header = document.querySelector('header');
+  const cards = document.querySelectorAll('.card');
+  const cardsPerRow = Math.floor(window.innerWidth / (cards[0]?.offsetWidth || 300));
   
-  if (window.innerWidth <= 768) { // Only for mobile
-    if (currentScroll > lastScroll && currentScroll > 50) {
-      // Scrolling down
+  // Show/hide based on scroll and layout (2 cards per row or mobile)
+  if (cardsPerRow <= 2 || window.innerWidth <= 768) {
+    if (currentScroll <= 0) {
+      // At top of page - always show
+      header.classList.remove('header-hidden');
+    } else if (currentScroll > lastScroll && currentScroll > 50) {
+      // Scrolling down - hide
       header.classList.add('header-hidden');
-    } else {
-      // Scrolling up
+    } else if (currentScroll < lastScroll) {
+      // Scrolling up - show
       header.classList.remove('header-hidden');
     }
     lastScroll = currentScroll;
+  } else {
+    // For wider layouts - always show
+    header.classList.remove('header-hidden');
   }
 });

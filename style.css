@@ -39,7 +39,7 @@ body {
                 url('https://blog.hospitalpilar.com.br/wp-content/uploads/2023/03/entenda-a-diferenca-entre-o-contraste-da-tomografia-e-da-ressonancia.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
-    padding-top: 150px;
+    padding-top: 180px;
     line-height: 1.6;
     overflow-y: auto;
 }
@@ -50,7 +50,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -58,6 +58,23 @@ header {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--glass-border);
     will-change: transform;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.search-container {
+    margin: 0.5rem auto 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.header-hidden .search-container {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
 }
 
 header h1 {
@@ -442,8 +459,7 @@ footer {
     header {
         position: fixed;
         top: 0;
-        height: 140px;
-        padding: 1.5rem;
+        padding: 1rem;
         z-index: 1000;
     }
     
@@ -475,7 +491,7 @@ footer {
 
 @media (max-width: 480px) {
     body {
-        padding-top: 220px;
+        padding-top: 240px;
     }
     
 header {
